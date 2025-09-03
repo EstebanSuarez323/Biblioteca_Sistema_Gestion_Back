@@ -36,7 +36,7 @@ async function cargarLibros(q = '') {
       <td>${l.ID_Libro}</td>
       <td>${l.Titulo}</td>
       <td>${l.Categoria ?? ''}</td>
-      <td>${l.Año_Publicacion ?? ''}</td>
+      <td>${(l.Anio_Publicacion ?? l['Año_Publicacion'] ?? l['Año'] ?? '')}</td>
       <td>${l.ISBN ?? ''}</td>
     `;
     tbody.appendChild(tr);

@@ -13,6 +13,34 @@ export function findAll() {
   `);
 }
 
+export function findById(id) {
+  return db.query(`
+    SELECT 
+      ID_Libro,
+      Categoria,
+      Titulo,
+      \`Año_Publicacion\` AS Anio_Publicacion,
+      ISBN
+    FROM Libro
+    WHERE ID_Libro = ?
+  `, [id]);
+}
+
+/** BÚSQUEDA por título (para el buscador del frontend) */
+export function findByTitleLike(q) {
+  return db.query(`
+    SELECT
+      ID_Libro,
+      Categoria,
+      Titulo,
+      \`Año_Publicacion\` AS Anio_Publicacion,
+      ISBN
+    FROM Libro
+    WHERE Titulo LIKE CONCAT('%', ?, '%')
+    ORDER BY ID_Libro
+  `, [q]);
+}
+
 export async function create({ Categoria, Titulo, Anio_Publicacion, ISBN }) {
   const [result] = await db.query(
     'INSERT INTO Libro (Categoria, Titulo, `Año_Publicacion`, ISBN) VALUES (?, ?, ?, ?)',
