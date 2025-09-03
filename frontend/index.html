@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Con defer, el JS se ejecuta después de que el DOM esté listo -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Biblioteca</h1>
+    <div class="search-bar">
+      <input type="text" id="buscarInput" placeholder="Buscar libros por título...">
+      <button id="buscarBtn">Buscar</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sección Libros -->
+    <section>
+      <h2>Libros</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Año</th>
+            <th>ISBN</th>
+          </tr>
+        </thead>
+        <tbody id="librosTabla"></tbody>
+      </table>
+    </section>
+
+    <!-- Sección Ejemplares -->
+    <section>
+      <h2>Ejemplares disponibles</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Ejemplar</th>
+            <th>Título</th>
+          </tr>
+        </thead>
+        <tbody id="ejemplaresTabla"></tbody>
+      </table>
+    </section>
+
+    <!-- Sección Préstamos -->
+    <section>
+      <h2>Préstamos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>F. Préstamo</th>
+            <th>F. Prevista</th>
+            <th>F. Devolución</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="prestamosTabla"></tbody>
+      </table>
+    </section>
+
+    <!-- Sección Usuarios -->
+    <section>
+      <h2>Agregar Usuario</h2>
+      <label for="tipoUsuario">Tipo:</label>
+      <select id="tipoUsuario">
+        <option value="">Seleccione...</option>
+        <option value="estudiante">Estudiante</option>
+        <option value="profesor">Profesor</option>
+        <option value="bibliotecario">Bibliotecario</option>
+      </select>
+      <label for="nombreUsuario">Nombre:</label>
+      <input type="text" id="nombreUsuario" placeholder="Nombre completo">
+      <button id="agregarUsuarioBtn">Agregar</button>
+    </section>
+
+    <!-- Sección Crear préstamo -->
+    <section>
+      <h2>Crear nuevo préstamo</h2>
+
+      <!-- Campo de búsqueda de usuarios -->
+      <label for="usuarioBuscar">Buscar usuario</label>
+      <input type="text" id="usuarioBuscar" placeholder="Escribe el nombre del usuario...">
+
+      <!-- Select de usuarios que se actualiza en tiempo real -->
+      <label for="usuarioSelect">Usuario</label>
+      <select id="usuarioSelect"></select>
+
+      <label for="ejemplarSelect">Ejemplar disponible</label>
+      <select id="ejemplarSelect"></select>
+
+      <label for="fechaPrestamo">Fecha préstamo</label>
+      <input type="date" id="fechaPrestamo">
+
+      <label for="fechaPrevista">Fecha devolución prevista</label>
+      <input type="date" id="fechaPrevista">
+
+      <button id="crearPrestamoBtn">Crear préstamo</button>
+    </section>
+
+  </main>
+</body>
+</html>
