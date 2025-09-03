@@ -17,12 +17,17 @@ const app = express();
 // acepta JSON
 app.use(express.json());
 
-// CORS: agrega aquí los orígenes que usas (Live Server suele ser 5500/5501)
+// CORS: agrega aquí los orígenes que usas
+
 const allowed = [
-  'http://localhost:5500'
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
+  'http://127.0.0.1:5501'
 ];
+
 app.use(cors({ origin: allowed, credentials: true }));
 app.options('*', cors()); // habilita preflight
+
 
 // health
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
